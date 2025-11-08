@@ -7,14 +7,15 @@ function changeText(id, text) {
   document.getElementById(id).innerText = text;
 }
 
-// Daqui para baixo voce ira escrever
-// o código para resolver o desafio
+//URLs da API
 const url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1292";
 const detail_url = "https://pokeapi.co/api/v2/pokemon/";
 
+//IDs dos elementos HTML
 const id_img = "img_sprite_front_default";
 const id_name = "name";
 
+//variaveis globais
 let listaPokemon = [];
 let pokemonAtual = 0;
 
@@ -27,7 +28,7 @@ async function pegarListaPokemon() {
 
 async function mostrarPokemon(pokemon) {
   //mostra "carregando..." enquanto busca os dados para ficar mais interativo
-  changeText(id_name, "Carregando...");
+  changeText(id_name, "Carregando\n...");
   changeImage(id_img, "");
   //pega os detalhes do pokemon específico
   const response = await fetch(detail_url + pokemon);

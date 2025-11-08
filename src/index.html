@@ -4,6 +4,8 @@
   <!--carregar arquivo css-->
   <head>
     <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@700&display=swap"
+      rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--ajuste de tela em smartphones-->
     <title>PokeDEX</title>
@@ -11,15 +13,17 @@
   </head>
   <body>
     <div class="pageContent">
+      <div class="screen">
       <h2 id="name">Nome do Pokemon</h2>
       <img
         id="img_sprite_front_default"
         src="../assets/missingno.png"
         alt="Imagem do Pokemon"
       />
+      </div>
       <div>
         <button id="previous" onclick="previousPokemon()">Anterior</button>
-        <button id="next" onclick="nextPokemon()">Proximo</button>
+        <button id="next" onclick="nextPokemon()">Próximo</button>
       </div>
     </div>
   </body>
