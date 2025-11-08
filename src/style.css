@@ -1,3 +1,10 @@
+/* OBS:
+Boa parte desse css foi feito com ajuda de IA pois eu tive essa idéia de deixar parecido com um gameboy, 
+mas não sei fazer css tão bem assim ainda. Aí eu usei para deixar do jeito que eu queria, e principalmente
+a parte de responsividade que eu não sei nada (só sei que tem que estar responsivo kkkkk). Como a trilha que estou 
+é a de backend, não quis gastar muito tempo com frontend.
+*/
+
 /* fundo */
 body {
   font-family: "Roboto", Arial, sans-serif;
@@ -88,39 +95,155 @@ body {
   width: 90%;
 }
 
-/* div botoes */
-.pageContent>div:last-of-type {
-  margin-top: 75px;
-  margin-bottom: 15px;
-  transform: rotate(-10deg);
-  padding-left: 185px;
+/* CSS PARA O DPAD E BOTOES AB */
+.controls-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding: 0 10px;
 }
 
-/* botoes em si */
-button {
+/* dpad */
+.dpad {
+  width: 120px;
+  height: 120px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+}
+
+.dpad-btn {
+  background-color: #333;
   border: 2px solid #222;
-  padding: 8px 16px;
-  text-align: center;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: "Roboto", sans-serif;
   cursor: pointer;
-  border-radius: 12px;
-  margin: 0 8px;
-  background-color: #555;
+  position: relative;
+}
+
+button.dpad-btn {
+  padding: 0;
+  border-radius: 0;
+}
+
+button.dpad-btn:active {
+  background-color: #444;
+}
+
+/* posicionamento dos botoes do dpad */
+.dpad-up {
+  grid-area: 1 / 2 / 2 / 3;
+  border-radius: 5px 5px 0 0;
+}
+
+.dpad-left {
+  grid-area: 2 / 1 / 3 / 2;
+  border-radius: 5px 0 0 5px;
+}
+
+.dpad-center {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.dpad-right {
+  grid-area: 2 / 3 / 3 / 4;
+  border-radius: 0 5px 5px 0;
+}
+
+.dpad-down {
+  grid-area: 3 / 2 / 4 / 3;
+  border-radius: 0 0 5px 5px;
+}
+
+/* triângulos do dpad */
+.dpad-left::after,
+.dpad-right::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 6px solid transparent;
+}
+
+.dpad-left::after {
+  border-right-color: #555;
+  transform: translate(-30%, -50%);
+}
+
+.dpad-right::after {
+  border-left-color: #555;
+  transform: translate(-70%, -50%);
+}
+
+/* botoes AB */
+.ab-buttons {
+  display: flex;
+  align-items: center;
+  transform: rotate(-10deg);
+}
+
+.btn-ab {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
+  font-weight: bold;
   color: white;
+  background-color: #A00030;
+  border: 3px solid #222;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: all 0.1s ease;
 }
 
-button:hover {
-  background-color: #666;
-  transform: translateY(-1px);
+.btn-ab:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-button:active {
-  background-color: #444;
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+#button-a {
+  margin-left: 25px;
+}
+
+/* responsividade */
+@media (max-width: 400px) {
+
+  #name {
+      font-size: 14px;
+      word-break: break-all;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #img_sprite_front_default {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+  
+      min-width: 0;
+      min-height: 0;
+    }
+
+  .screen {
+    padding: 10px;
+    min-height: auto;
+  }
+
+  .pageContent {
+    width: 95%;
+    margin-top: 1em;
+  }
+
+  /* deixa vertical */
+  .controls-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ab-buttons {
+    transform: rotate(0deg);
+  }
 }

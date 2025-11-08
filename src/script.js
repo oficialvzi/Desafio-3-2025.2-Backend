@@ -7,11 +7,11 @@ function changeText(id, text) {
   document.getElementById(id).innerText = text;
 }
 
-//URLs da API
+//urls da api
 const url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1292";
 const detail_url = "https://pokeapi.co/api/v2/pokemon/";
 
-//IDs dos elementos HTML
+//ids dos elementos html
 const id_img = "img_sprite_front_default";
 const id_name = "name";
 
@@ -19,13 +19,14 @@ const id_name = "name";
 let listaPokemon = [];
 let pokemonAtual = 0;
 
-//função para pegar a lista de pokemons da API
+//funcaoo para pegar a lista de pokemons da API
 async function pegarListaPokemon() {
   const response = await fetch(url);
   const data = await response.json();
   listaPokemon = data.results; //armazenar a lista de pokemons na variavel global
 }
 
+//funcaoo para mostrar o pokemon atual
 async function mostrarPokemon(pokemon) {
   //mostra "carregando..." enquanto busca os dados para ficar mais interativo
   changeText(id_name, "Carregando\n...");
@@ -38,6 +39,7 @@ async function mostrarPokemon(pokemon) {
   changeImage(id_img, data.sprites.front_default);
 }
 
+//funcoes para os botoes anterior e proximo
 function previousPokemon() {
   pokemonAtual--; //diminui o index do pokemon atual
   //wrap-around
@@ -60,7 +62,7 @@ function nextPokemon() {
   mostrarPokemon(nomePokemon);
 }
 
-//função principal para iniciar na ordem correta
+//funcao principal para iniciar na ordem correta
 async function main() {
   await pegarListaPokemon(); //pega a lista de pokemons
   const primeiroPokemon = listaPokemon[pokemonAtual].name; //pega o nome do primeiro pokemon

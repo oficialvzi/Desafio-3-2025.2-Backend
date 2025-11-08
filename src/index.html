@@ -10,6 +10,7 @@
     <!--ajuste de tela em smartphones-->
     <title>PokeDEX</title>
     <!--titulo da aba da pagina-->
+    <link rel="icon" type="image/png" href="../assets/pokeball.png" />
   </head>
   <body>
     <div class="pageContent">
@@ -21,9 +22,20 @@
         alt="Imagem do Pokemon"
       />
       </div>
-      <div>
-        <button id="previous" onclick="previousPokemon()">Anterior</button>
-        <button id="next" onclick="nextPokemon()">Próximo</button>
+      <div class="controls-container">
+      
+        <div class="dpad">
+          <div class="dpad-btn dpad-up"></div>
+          <button id="previous" class="dpad-btn dpad-left" onclick="previousPokemon()" aria-label="Pokémon Anterior"></button>
+          <div class="dpad-btn dpad-center"></div>
+          <button id="next" class="dpad-btn dpad-right" onclick="nextPokemon()" aria-label="Próximo Pokémon"></button>
+          <div class="dpad-btn dpad-down"></div>
+        </div>
+      
+        <div class="ab-buttons">
+          <button class="btn-ab" id="button-b">B</button>
+          <button class="btn-ab" id="button-a">A</button>
+        </div>
       </div>
     </div>
   </body>
